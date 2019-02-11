@@ -11,4 +11,4 @@ COPY src/ /slicer
 RUN R -e "install.packages(c('SLICER', 'lle'),dependencies=TRUE, repos='http://cran.rstudio.com/')"
 
 # Run test.R when the container launches
-CMD ["Rscript", "SLICER_example.R"]
+CMD ["Rscript", "test.R"]
