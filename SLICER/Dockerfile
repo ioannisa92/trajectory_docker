@@ -1,5 +1,5 @@
 # Use an official R image
-FROM r-basem
+FROM r-base
 
 # Set the working directory to /slicer
 WORKDIR /slicer
@@ -8,8 +8,8 @@ WORKDIR /slicer
 COPY src/ /slicer
 
 # Install any needed packages specified in requirements.txt
-RUN install.library(SLICER)
-RUN install.library(lle)
-
+RUN echo "installing dependencies for SLICER..."
+RUN R -e "install.packages(c('SLICER', 'lle'),dependencies=TRUE, repos='http://cran.rstudio.com/')"
+RUN echo "done"
 # Run test.R when the container launches
 CMD ["Rscript", "test.R"]
